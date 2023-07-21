@@ -16,9 +16,9 @@ const Detail = ({
 }) => {
   const [dark, darkSet] = React.useState(false);
   return (
-    <div className="z-100">
+    <div className="bg-black">
       <div
-        className={` bg-[#5964E0] min-w-full h-28 rounded-bl-[56px] relative flex flex-col items-center mb-32 text-[#19202D] bg-[url("src/assets/desktop/bg-pattern-header.svg")] bg-cover bg-center`}
+        className={` bg-[#5964E0] min-w-full h-28 sm:rounded-bl-[56px] relative flex flex-col items-center mb-32 text-[#19202D] bg-[url("src/assets/desktop/bg-pattern-header.svg")] bg-cover bg-center`}
       >
         <div className={`w-[80%] flex justify-between items-end mt-5`}>
           <p className={`font-black text-xl text-white`}>devjobs</p>
@@ -41,16 +41,16 @@ const Detail = ({
         </div>
 
         {/* details  */}
-        <div className="absolute top-20 w-[50%] h-24 bg-white flex">
+        <div className="absolute top-20 sm:w-[50%] w-[90%] sm:h-24 h-52 bg-white flex rounded-[10px] sm:rounded-none">
           <div
             style={{ background: logoBackground }}
-            className="w-[20%] h-full bg-blue-500 flex justify-center items-center"
+            className="sm:w-[20%] sm:h-full w-14 h-14 bg-blue-500 flex justify-center items-center sm:relative sm:top-0 sm:left-0 absolute -top-7 left-[40%] rounded-[10px] sm:rounded-none"
           >
             {company}
           </div>
-          <div className="w-[80%] flex justify-between items-center p-5">
-            <div>
-              <p>{company}</p>
+          <div className="w-full sm:w-[80%] flex flex-col sm:flex-row justify-evenly items-center p-5">
+            <div className="">
+              <p>{"company"}</p>
               <p>{`${company}.com`}</p>
             </div>
             <button className="bg-violet-200 text-violet-500 px-4 py-2 rounded">
@@ -60,11 +60,11 @@ const Detail = ({
         </div>
       </div>
       <div
-        className="flex flex-col items-center
+        className="flex flex-col items-center mt-52 sm:mt-0 
       "
       >
-        <div className="p-10 w-[50%] bg-white clear-right">
-          <div className="flex justify-between items-center">
+        <div className="p-10 w-[90%] sm:w-[50%] bg-white rounded-[10px] sm:rounded-none">
+          <div className="flex flex-col sm:flex-row justify-between sm:items-center">
             <div>
               <p className={`text-[#9DAEC2]`}>{`${postedAt} . ${contract}`}</p>
               <p
@@ -72,11 +72,11 @@ const Detail = ({
                   dark ? "text-white" : "text-[hsl(214,17%,51%)]"
                 }`}
               >
-                {position}
+                {"Senior software Engineer"}
               </p>
-              <p className={`text-[#5964E0] mt-4`}>{location}</p>
+              <p className={`text-[#5964E0] sm:mt-4`}>{"Location"}</p>
             </div>
-            <button className="text-violet-200 bg-violet-700 px-4 py-2 rounded">
+            <button className="text-violet-200 bg-violet-700 px-4 py-2 rounded mt-10 sm:mt-0 w-full sm:w-fit">
               Apply Now
             </button>
           </div>
@@ -149,13 +149,13 @@ const Detail = ({
         </div>
       </div>
       <footer className="w-full bg-white h-20 flex justify-center mt-20">
-        <div className="w-[50%] flex justify-between items-center">
-          <div>
+        <div className="w-[90%] sm:w-[50%] flex justify-between items-center ">
+          <div className="hidden sm:block">
             <p>{"Senior Software Engineer"}</p>
             <p>{"So Digital Inc."}</p>
           </div>
 
-          <button className="text-violet-200 bg-violet-700 px-4 py-2 rounded">
+          <button className="text-violet-200 bg-violet-700 px-4 py-2 rounded w-full sm:w-fit">
             Apply Now
           </button>
         </div>

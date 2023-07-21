@@ -35,20 +35,20 @@ const Navbar = ({
         </div>
       </div>
       <div
-        className={`absolute top-20 w-[80%] h-14 ${
+        className={`absolute top-20 w-[80%] sm:h-14 h-20 ${
           dark ? "bg-[#19202D]" : "bg-white"
-        } rounded-sm flex justify-center items-center`}
+        } sm:rounded-sm rounded-md flex justify-center  items-center`}
       >
         <div
-          className={`w-[40%] border-r-2 ${
+          className={`w-full sm:w-[40%] sm:border-r-2 ${
             dark ? "border-[#6E8098]" : ""
-          } h-full flex justify-center items-center p-5 `}
+          } h-full flex sm:justify-start justify-between items-center p-5`}
         >
           {/* icon */}
           <img
             src="src\assets\desktop\icon-search.svg"
             alt="search icon"
-            className="w-5 h-5 mr-2"
+            className="hidden sm:flex w-5 h-5 mr-2"
           />
           <input
             type="text"
@@ -56,15 +56,30 @@ const Navbar = ({
             value={searchValue}
             onChange={(e) => setSearchValue(e.target.value)}
             placeholder="Filter by title, companies, expertise..."
-            className={`w-full h-10 focus:outline-none text-lg ${
+            className={`sm:w-[40%] w-[29%] h-10 focus:outline-none text-lg ${
               dark ? "bg-[#19202D]" : "bg-white"
             } ${dark ? "text-white" : "text-gray-300"} -mt-1 cursor-pointer`}
           />
+
+          <div className="sm:hidden flex justify-center items-center">
+            <div className="flex items-center justify-center w-12 h-12 rounded-md bg-white sm:hidden">
+              <img
+                src="src\assets\mobile\icon-filter.svg"
+                alt=""
+                className="fill-white"
+              />
+            </div>
+
+            <div className="flex items-center justify-center w-12 h-12 rounded-md bg-blue-500 sm:hidden">
+              <img src="src\assets\desktop\icon-search.svg" alt="" />
+            </div>
+          </div>
         </div>
+
         <div
-          className={`w-[30%] h-full flex justify-center items-center border-r-2 p-5 ${
+          className={`hidden w-[30%] h-full sm:flex justify-center items-center border-r-2 p-5 ${
             dark ? "border-[#6E8098]" : ""
-          }`}
+          } `}
         >
           {/* icon */}
           <img
@@ -84,7 +99,7 @@ const Navbar = ({
           />
         </div>
         <div
-          className={`max-w-md flex justify-evenly items-center ${
+          className={`hidden sm:flex justify-evenly items-center max-w-md ${
             dark ? "text-white" : "text-gray-300"
           } px-2`}
         >
@@ -110,9 +125,3 @@ const Navbar = ({
 };
 
 export default Navbar;
-
-{
-  /* <div className={`flex justify-center`}>
-  <Body dark={dark} data={filteredData} />
-</div> */
-}

@@ -68,9 +68,9 @@ const Index = () => {
           ))}
 
           {visibleItems < filteredData.length && (
-            <div className="flex">
+            <div className="flex justify-center md:justify-start mb-10">
               <button
-                className="bg-blue-500 text-white px-4 py-2 rounded"
+                className="bg-blue-500 text-white px-4 py-2 rounded "
                 onClick={handleLoadMore}
               >
                 Load More
