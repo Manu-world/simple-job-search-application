@@ -4,7 +4,7 @@ import { useLocation } from "react-router-dom";
 const Detail = () => {
   const [dark, darkSet] = React.useState(false);
   const { state } = useLocation();
-  console.log(state.company);
+  console.log(state.dark);
   return (
     <div className={`${dark ? "bg-black" : "bg-gray-200"}`}>
       <div
@@ -93,26 +93,30 @@ const Detail = () => {
               Requirements
             </h1>
             <p className="mt-5">{state.requirements.content}</p>
-            <p className="ml-5 mt-5">
+            <div className="ml-5 mt-5">
               <ul className="list-disc">
                 {state.requirements.items.map((e) => (
-                  <li className="pl-5">{e}</li>
+                  <li key={e} className="pl-5">
+                    {e}
+                  </li>
                 ))}
               </ul>
-            </p>
+            </div>
             <p
               className={`mt-5 font-bold ${dark ? "text-white" : "text-black"}`}
             >
               What you will do
             </p>
             <p className="mt-5">{state.role.content}</p>
-            <p className="ml-5 mt-5">
+            <div className="ml-5 mt-5">
               <ul className="custom-list-style list-decimal">
                 {state.role.items.map((e) => (
-                  <li className="pl-5">{e}</li>
+                  <li key={e} className="pl-5">
+                    {e}
+                  </li>
                 ))}
               </ul>
-            </p>
+            </div>
           </div>
         </div>
       </div>
