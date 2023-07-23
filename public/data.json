@@ -94,7 +94,7 @@
   {
     "id": 4,
     "company": "Office Lite",
-    "logo": "./src/assets/logos/officelite.svg",
+    "logo": "src/assets/logos/officelite.svg",
     "logoBackground": "hsl(227, 62%, 48%)",
     "position": "Senior Application Engineer",
     "postedAt": "2d ago",
