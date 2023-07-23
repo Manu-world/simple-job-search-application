@@ -6,7 +6,6 @@ import { Route, Routes } from "react-router-dom";
 const App = () => {
   return (
     <div className="">
-      {/* <Index /> */}
       <Routes>
         <Route path="/details" element={<Detail />} />
         <Route path="/" element={<Index />} />
