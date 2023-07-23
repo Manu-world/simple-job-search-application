@@ -1,4 +1,5 @@
-import React from "react";
+import React, { useState } from "react";
+import Modal from "./Modal";
 
 const Navbar = ({
   dark,
@@ -11,44 +12,54 @@ const Navbar = ({
   searchValue,
   setSearchValue,
 }) => {
+  const [showModal, setShowModal] = useState(false);
+  const handleOpen = () => {
+    setShowModal(true);
+  };
+  const handleClose = () => {
+    setShowModal(false);
+  };
   return (
     <div
-      className={`bg-[#5964E0] min-w-full h-28 rounded-bl-[56px] relative flex flex-col items-center mb-32 text-[#19202D] bg-[url("src/assets/desktop/bg-pattern-header.svg")] bg-cover bg-center`}
+      className={`relative mb-32 flex h-28 min-w-full flex-col items-center bg-[#5964E0] bg-[url("src/assets/desktop/bg-pattern-header.svg")] bg-cover bg-center text-[#19202D] sm:rounded-bl-[56px]`}
     >
-      <div className={`w-[80%] flex justify-between items-end mt-5`}>
-        <p className={`font-black text-xl text-white`}>devjobs</p>
-        <div className="flex justify-center items-center gap-2">
-          {/* icon */}
+      <Modal
+        showModal={showModal}
+        handleClose={handleClose}
+        onSearch={onSearch}
+      />
+      <div className={`mt-5 flex w-[80%] items-end justify-between`}>
+        <p className={`text-xl font-black text-white`}>devjobs</p>
+        <div className="flex items-center justify-center gap-2">
           <img src="src\assets\desktop\icon-sun.svg" alt="sun icon" />
           <div
             onClick={onClick}
-            className={`w-8 h-4 bg-white rounded-full flex items-center ${
+            className={`flex h-4 w-8 items-center rounded-full bg-white ${
               dark ? "justify-end" : "justify-start"
             } `}
           >
             <div
-              className={`m-1 w-2 h-2 rounded-full bg-blue-500 hover:bg-blue-400`}
+              className={`m-1 h-2 w-2 rounded-full bg-blue-500 hover:bg-blue-400`}
             ></div>
           </div>
-          {/* icon */}
           <img src="src\assets\desktop\icon-moon.svg" alt="moon icon" />
         </div>
       </div>
       <div
-        className={`absolute top-20 w-[80%] sm:h-14 h-20 ${
+        className={`absolute top-20 h-20 w-[80%] sm:h-14 ${
           dark ? "bg-[#19202D]" : "bg-white"
-        } sm:rounded-sm rounded-md flex justify-center  items-center`}
+        } flex items-center justify-center rounded-md  sm:rounded-sm`}
       >
+        {/* search by title */}
         <div
-          className={`w-full sm:w-[40%] sm:border-r-2 ${
+          className={`w-full sm:w-[33%] sm:border-r-2 md:w-[40%] ${
             dark ? "border-[#6E8098]" : ""
-          } h-full flex sm:justify-start justify-between items-center p-5`}
+          } flex h-full items-center justify-between p-5 sm:justify-start`}
         >
-          {/* icon */}
           <img
             src="src\assets\desktop\icon-search.svg"
             alt="search icon"
-            className="hidden sm:flex w-5 h-5 mr-2"
+            className="mr-2 hidden h-5 w-5 sm:flex"
           />
           <input
             type="text"
@@ -56,36 +67,54 @@ const Navbar = ({
             value={searchValue}
             onChange={(e) => setSearchValue(e.target.value)}
             placeholder="Filter by title, companies, expertise..."
-            className={`sm:w-[40%] w-[29%] h-10 focus:outline-none text-lg ${
+            className={`h-10 w-[40%] focus:outline-none sm:w-[85%] ${
               dark ? "bg-[#19202D]" : "bg-white"
             } ${dark ? "text-white" : "text-gray-300"} -mt-1 cursor-pointer`}
           />
 
-          <div className="sm:hidden flex justify-center items-center">
-            <div className="flex items-center justify-center w-12 h-12 rounded-md bg-white sm:hidden">
-              <img
-                src="src\assets\mobile\icon-filter.svg"
-                alt=""
-                className="fill-white"
-              />
+          {/* mobile view Filter  */}
+          <div className="flex items-center justify-center sm:hidden">
+            <div
+              className={`flex h-12 w-12 items-center justify-center rounded-md ${
+                dark ? "bg-[#19202D]" : "bg-white"
+              } sm:hidden`}
+              onClick={() => handleOpen()}
+            >
+              <svg width="20" height="20" xmlns="http://www.w3.org/2000/svg">
+                <path
+                  d="M19.108 0H.86a.86.86 0 00-.764.455.833.833 0 00.068.884l6.685 9.202.007.01c.242.32.374.708.375 1.107v7.502a.825.825 0 00.248.594.865.865 0 00.942.18l3.756-1.4c.337-.1.56-.41.56-.784v-6.092c0-.399.132-.787.375-1.108l.007-.009 6.685-9.202c.19-.26.217-.6.068-.884A.86.86 0 0019.108 0z"
+                  fill={`${dark ? "#fff" : "#6E8098"}`}
+                  fill-rule="nonzero"
+                />
+              </svg>
             </div>
 
-            <div className="flex items-center justify-center w-12 h-12 rounded-md bg-blue-500 sm:hidden">
-              <img src="src\assets\desktop\icon-search.svg" alt="" />
+            <div
+              className="flex h-12 w-12 items-center justify-center rounded-md bg-blue-500 sm:hidden"
+              onClick={() => onSearch(searchValue, locationValue, fullTimeOnly)}
+            >
+              <svg width="24" height="24" xmlns="http://www.w3.org/2000/svg">
+                <path
+                  d="M17.112 15.059h-1.088l-.377-.377a8.814 8.814 0 002.15-5.784A8.898 8.898 0 008.898 0 8.898 8.898 0 000 8.898a8.898 8.898 0 008.898 8.899c2.211 0 4.23-.808 5.784-2.143l.377.377v1.081l6.845 6.832 2.04-2.04-6.832-6.845zm-8.214 0A6.16 6.16 0 118.9 2.737a6.16 6.16 0 010 12.322z"
+                  fill="#fff"
+                  fill-rule="nonzero"
+                />
+              </svg>
             </div>
           </div>
         </div>
 
+        {/* location search area  */}
+
         <div
-          className={`hidden w-[30%] h-full sm:flex justify-center items-center border-r-2 p-5 ${
+          className={`hidden h-full items-center justify-center border-r-2 p-5 sm:flex sm:w-[33%] md:w-[30%] ${
             dark ? "border-[#6E8098]" : ""
           } `}
         >
-          {/* icon */}
           <img
             src="src\assets\desktop\icon-location.svg"
             alt="location icon"
-            className="w-4 h-5 mr-2"
+            className="mr-2 h-5 w-4"
           />
           <input
             type="text"
@@ -93,13 +122,13 @@ const Navbar = ({
             value={locationValue}
             onChange={(e) => setLocationValue(e.target.value)}
             placeholder="Filter by location..."
-            className={`w-full h-10 focus:outline-none ${
+            className={`h-10 w-full focus:outline-none ${
               dark ? "bg-[#19202D]" : "bg-white"
             } ${dark ? "text-white" : "text-gray-300"} -mt-2 cursor-pointer`}
           />
         </div>
         <div
-          className={`hidden sm:flex justify-evenly items-center max-w-md ${
+          className={`hidden max-w-md items-center justify-evenly sm:flex ${
             dark ? "text-white" : "text-gray-300"
           } px-2`}
         >
@@ -109,12 +138,18 @@ const Navbar = ({
             id="check"
             checked={fullTimeOnly}
             onChange={(e) => setFullTimeOnly(e.target.checked)}
-            className="form-checkbox w-3 h-3 cursor-pointer bg-gray-300"
+            className="form-checkbox h-3 w-3 cursor-pointer bg-gray-300"
           />
-          <p className="ml-3 mr-6">Full Time Only</p>
+          <p
+            className={`ml-3 mr-6 text-sm font-bold ${
+              dark ? "text-white" : "text-black"
+            }`}
+          >
+            Full Time <span className="hidden md:inline-block"> Only</span>
+          </p>
           <button
             onClick={() => onSearch(searchValue, locationValue, fullTimeOnly)}
-            className={`px-4 py-2 bg-[#5964E0] flex justify-center items-center rounded-sm text-white hover:bg-[#939BF4]`}
+            className={`flex items-center justify-center rounded-sm bg-[#5964E0] px-4 py-2 text-white hover:bg-[#939BF4]`}
           >
             Search
           </button>

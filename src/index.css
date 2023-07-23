@@ -1,3 +1,12 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+body {
+  font-family: "Kumbh Sans", sans-serif;
+}
+
+.custom-list-decimal {
+  list-style-type: decimal;
+  color: blue;
+}

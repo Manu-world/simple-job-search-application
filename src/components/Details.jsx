@@ -1,161 +1,129 @@
 import React from "react";
+import { useLocation } from "react-router-dom";
 
-const Detail = ({
-  company,
-  logo,
-  postedAt,
-  contract,
-  location,
-  position,
-  logoBackground,
-  website,
-  apply,
-  description,
-  requirements, //content and items inside
-  role,
-}) => {
+const Detail = () => {
   const [dark, darkSet] = React.useState(false);
+  const { state } = useLocation();
+  console.log(state.company);
   return (
-    <div className="bg-black">
+    <div className={`${dark ? "bg-black" : "bg-gray-200"}`}>
       <div
-        className={` bg-[#5964E0] min-w-full h-28 sm:rounded-bl-[56px] relative flex flex-col items-center mb-32 text-[#19202D] bg-[url("src/assets/desktop/bg-pattern-header.svg")] bg-cover bg-center`}
+        className={` relative mb-32 flex h-28 min-w-full flex-col items-center bg-[#5964E0] bg-[url("src/assets/desktop/bg-pattern-header.svg")] bg-cover bg-center text-[#19202D] sm:rounded-bl-[56px]`}
       >
-        <div className={`w-[80%] flex justify-between items-end mt-5`}>
-          <p className={`font-black text-xl text-white`}>devjobs</p>
-          <div className="flex justify-center items-center gap-2">
+        <div className={`mt-5 flex w-[80%] items-end justify-between`}>
+          <p className={`text-xl font-black text-white`}>devjobs</p>
+          <div className="flex items-center justify-center gap-2">
             {/* icon */}
             <img src="src\assets\desktop\icon-sun.svg" alt="sun icon" />
             <div
               onClick={() => darkSet((prev) => !prev)}
-              className={`w-8 h-4 bg-white rounded-full flex items-center ${
+              className={`flex h-4 w-8 items-center rounded-full bg-white ${
                 dark ? "justify-end" : "justify-start"
               } `}
             >
               <div
-                className={`m-1 w-2 h-2 rounded-full bg-blue-500 hover:bg-blue-400`}
+                className={`m-1 h-2 w-2 rounded-full bg-blue-500 hover:bg-blue-400`}
               ></div>
             </div>
-            {/* icon */}
             <img src="src\assets\desktop\icon-moon.svg" alt="moon icon" />
           </div>
         </div>
 
         {/* details  */}
-        <div className="absolute top-20 sm:w-[50%] w-[90%] sm:h-24 h-52 bg-white flex rounded-[10px] sm:rounded-none">
+        <div
+          className={`absolute top-20 flex h-52 w-[90%] rounded-[10px] ${
+            dark ? "bg-[#19202D]" : "bg-white"
+          } sm:h-24 sm:w-[50%] sm:rounded-none`}
+        >
           <div
-            style={{ background: logoBackground }}
-            className="sm:w-[20%] sm:h-full w-14 h-14 bg-blue-500 flex justify-center items-center sm:relative sm:top-0 sm:left-0 absolute -top-7 left-[40%] rounded-[10px] sm:rounded-none"
+            style={{ background: state.logoBackground }}
+            className="absolute -top-7 left-[40%] flex h-14 w-14 items-center justify-center rounded-[10px] bg-blue-500 sm:relative sm:left-0 sm:top-0 sm:h-full sm:w-[20%] sm:rounded-none"
           >
-            {company}
+            <img src={state.logo} />
           </div>
-          <div className="w-full sm:w-[80%] flex flex-col sm:flex-row justify-evenly items-center p-5">
-            <div className="">
-              <p>{"company"}</p>
-              <p>{`${company}.com`}</p>
+          <div className="flex w-full flex-col items-center justify-evenly p-5 sm:w-[80%] sm:flex-row">
+            <div className="flex flex-col items-center justify-center sm:block">
+              <p className={`font-bold ${dark ? "text-white" : ""}`}>
+                {state.company}
+              </p>
+              <p className="text-[#9DAEC2]">{`${state.company.toLowerCase()}.com`}</p>
             </div>
-            <button className="bg-violet-200 text-violet-500 px-4 py-2 rounded">
+            <a
+              href={state.website}
+              className="rounded bg-violet-200 px-4 py-2 text-violet-500"
+            >
               Company Site
-            </button>
+            </a>
           </div>
         </div>
       </div>
       <div
-        className="flex flex-col items-center mt-52 sm:mt-0 
+        className="mt-52 flex flex-col items-center sm:mt-0 
       "
       >
-        <div className="p-10 w-[90%] sm:w-[50%] bg-white rounded-[10px] sm:rounded-none">
-          <div className="flex flex-col sm:flex-row justify-between sm:items-center">
+        <div
+          className={`w-[90%] rounded-[10px] ${
+            dark ? "bg-[#19202D]" : "bg-white"
+          } p-10 sm:w-[50%] sm:rounded-none`}
+        >
+          <div className="flex flex-col justify-between sm:flex-row sm:items-center">
             <div>
-              <p className={`text-[#9DAEC2]`}>{`${postedAt} . ${contract}`}</p>
+              <p
+                className={`text-[#9DAEC2]`}
+              >{`${state.postedAt} . ${state.contract}`}</p>
               <p
                 className={`text-xl font-black ${
                   dark ? "text-white" : "text-[hsl(214,17%,51%)]"
                 }`}
               >
-                {"Senior software Engineer"}
+                {state.position}
               </p>
-              <p className={`text-[#5964E0] sm:mt-4`}>{"Location"}</p>
+              <p className={`text-[#5964E0] sm:mt-4`}>{state.location}</p>
             </div>
-            <button className="text-violet-200 bg-violet-700 px-4 py-2 rounded mt-10 sm:mt-0 w-full sm:w-fit">
+            <button className="mt-10 w-full rounded bg-violet-700 px-4 py-2 text-violet-200 sm:mt-0 sm:w-fit">
               Apply Now
             </button>
           </div>
           {/* first paragraph */}
-          <div className="">
-            <p className="mt-5">
-              Lorem ipsum dolor sit amet consectetur adipisicing elit. Delectus
-              blanditiis iure, omnis dolores pariatur ab necessitatibus sapiente
-              enim. Libero, sint rem! Deleniti dolorum beatae soluta deserunt
-              nulla, nemo maxime! Dolore! Praesentium itaque dolor rerum
-              provident officia quisquam laboriosam facere minus neque,
-              delectus, a suscipit! Tempora libero blanditiis eaque et
-              laudantium illo voluptatem nisi labore alias ipsa! Nemo
-              consequuntur totam optio! Quaerat adipisci atque voluptatum veniam
-              qui doloribus! Quo quaerat neque, est quos a ipsa asperiores
-              nostrum impedit sit at voluptatum, repellat voluptates delectus
-              modi laborum illum ut libero debitis ullam. Natus quidem similique
+          <div className="text-[#9DAEC2]">
+            <p className="mt-5">{state.description}</p>
+            <h1
+              className={`mt-5 font-bold ${dark ? "text-white" : "text-black"}`}
+            >
+              Requirements
+            </h1>
+            <p className="mt-5">{state.requirements.content}</p>
+            <p className="ml-5 mt-5">
+              <ul className="list-disc">
+                {state.requirements.items.map((e) => (
+                  <li className="pl-5">{e}</li>
+                ))}
+              </ul>
             </p>
-            <p className="mt-5">{"Requirement"}</p>
-            <p className="mt-5">
-              enim. Libero, sint rem! Deleniti dolorum beatae soluta deserunt
-              nulla, nemo maxime! Dolore! Praesentium itaque dolor rerum
-              provident officia quisquam laboriosam facere minus neque,
-              delectus, a suscipit! Tempora libero blanditiis eaque et
-              laudantium illo voluptatem nisi labore alias ipsa! Nemo
-              consequuntur totam optio! Quaerat adipisci atque voluptatum veniam
+            <p
+              className={`mt-5 font-bold ${dark ? "text-white" : "text-black"}`}
+            >
+              What you will do
             </p>
-            <ul className="mt-5">
-              <li>
-                Lorem ipsum dolor, sit amet consectetur adipisicing elit.{" "}
-              </li>
-              <li>
-                Lorem ipsum dolor, sit amet consectetur adipisicing elit.{" "}
-              </li>
-              <li>
-                Lorem ipsum dolor, sit amet consectetur adipisicing elit.{" "}
-              </li>
-              <li>
-                Lorem ipsum dolor, sit amet consectetur adipisicing elit.{" "}
-              </li>
-              <li>
-                Lorem ipsum dolor, sit amet consectetur adipisicing elit.{" "}
-              </li>
-            </ul>
-            <p className="mt-5">{"what you will do"}</p>
-            <p className="mt-5">
-              Lorem, ipsum dolor sit amet consectetur adipisicing elit.
-              Voluptatem, quod consectetur quidem perspiciatis, aut aliquam odio
-              ea quibusdam in, iusto repellat quae provident incidunt ipsum
-              beatae ex sequi culpa suscipit.
+            <p className="mt-5">{state.role.content}</p>
+            <p className="ml-5 mt-5">
+              <ul className="custom-list-style list-decimal">
+                {state.role.items.map((e) => (
+                  <li className="pl-5">{e}</li>
+                ))}
+              </ul>
             </p>
-            <ul className="mt-5">
-              <li>
-                Lorem ipsum dolor, sit amet consectetur adipisicing elit.{" "}
-              </li>
-              <li>
-                Lorem ipsum dolor, sit amet consectetur adipisicing elit.{" "}
-              </li>
-              <li>
-                Lorem ipsum dolor, sit amet consectetur adipisicing elit.{" "}
-              </li>
-              <li>
-                Lorem ipsum dolor, sit amet consectetur adipisicing elit.{" "}
-              </li>
-              <li>
-                Lorem ipsum dolor, sit amet consectetur adipisicing elit.{" "}
-              </li>
-            </ul>
           </div>
         </div>
       </div>
-      <footer className="w-full bg-white h-20 flex justify-center mt-20">
-        <div className="w-[90%] sm:w-[50%] flex justify-between items-center ">
+      <footer className="mt-20 flex h-20 w-full justify-center bg-white">
+        <div className="flex w-[90%] items-center justify-between sm:w-[50%] ">
           <div className="hidden sm:block">
-            <p>{"Senior Software Engineer"}</p>
+            <p>{state.position}</p>
             <p>{"So Digital Inc."}</p>
           </div>
 
-          <button className="text-violet-200 bg-violet-700 px-4 py-2 rounded w-full sm:w-fit">
+          <button className="w-full rounded bg-violet-700 px-4 py-2 text-violet-200 sm:w-fit">
             Apply Now
           </button>
         </div>

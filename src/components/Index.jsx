@@ -47,7 +47,7 @@ const Index = () => {
   };
 
   return (
-    <div className={`${dark ? "bg-black" : "bg-gray-200"}`}>
+    <div className={`${dark ? "bg-black" : "bg-gray-200"} min-h-screen`}>
       <Navbar
         onClick={() => setDark((prev) => !prev)}
         dark={dark}
@@ -60,17 +60,17 @@ const Index = () => {
         searchValue={searchValue}
       />
 
-      {/* the Body component */}
-      <div className="w-full flex flex-col items-center">
-        <div className="grid md:grid-cols-3 sm:grid-cols-2 grid-cols-1 w-[80%] gap-x-5 gap-y-14">
+      {/* business cards mapped */}
+      <div className="flex w-full flex-col items-center">
+        <div className="grid w-[80%] grid-cols-1 gap-x-5 gap-y-14 pb-10 sm:grid-cols-2 sm:pb-0 md:grid-cols-3">
           {filteredData.slice(0, visibleItems).map((item) => (
-            <Card key={item.id} {...item} dark={dark} />
+            <Card key={item.id} data={item} dark={dark} />
           ))}
 
           {visibleItems < filteredData.length && (
-            <div className="flex justify-center md:justify-start mb-10">
+            <div className="mb-10 flex justify-center md:justify-start">
               <button
-                className="bg-blue-500 text-white px-4 py-2 rounded "
+                className="rounded bg-blue-500 px-4 py-2 text-white "
                 onClick={handleLoadMore}
               >
                 Load More
