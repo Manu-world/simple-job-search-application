@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import Card from "./Card";
-import data from "data.json";
+import data from "../data.json";
 import Navbar from "./Navbar";
 
 const Index = () => {
