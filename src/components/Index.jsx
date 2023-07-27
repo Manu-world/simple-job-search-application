@@ -1,16 +1,15 @@
 import React, { useState } from "react";
 import Card from "./Card";
 import data from "../data.json";
-import Navbar from "./Navbar";
+import Search from "./Search";
 
-const Index = () => {
+const Index = ({ dark }) => {
   const [visibleItems, setVisibleItems] = useState(12);
 
   const [searchValue, setSearchValue] = useState("");
   const [locationValue, setLocationValue] = useState("");
   const [fullTimeOnly, setFullTimeOnly] = useState(false);
   const [filteredData, setFilteredData] = useState(data);
-  const [dark, setDark] = useState(false);
 
   const handleSearch = (searchValue, locationValue, fullTimeOnly) => {
     let newData = data;
@@ -40,16 +39,14 @@ const Index = () => {
     setFilteredData(newData);
   };
 
-  // from the body component
+  // manage visible items
   const handleLoadMore = () => {
-    // Increase the number of visible items by 12
     setVisibleItems((prevVisibleItems) => prevVisibleItems + 12);
   };
 
   return (
-    <div className={`${dark ? "bg-black" : "bg-gray-200"} min-h-screen`}>
-      <Navbar
-        onClick={() => setDark((prev) => !prev)}
+    <div className={`min-h-screen`}>
+      <Search
         dark={dark}
         onSearch={handleSearch}
         setLocationValue={setLocationValue}

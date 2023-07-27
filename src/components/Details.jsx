@@ -1,34 +1,11 @@
 import React from "react";
 import { useLocation } from "react-router-dom";
 
-const Detail = () => {
-  const [dark, darkSet] = React.useState(false);
+const Detail = ({ dark }) => {
   const { state } = useLocation();
-  console.log(state.dark);
   return (
     <div className={`${dark ? "bg-black" : "bg-gray-200"}`}>
-      <div
-        className={` relative mb-32 flex h-28 min-w-full flex-col items-center bg-[#5964E0] bg-[url("src/assets/desktop/bg-pattern-header.svg")] bg-cover bg-center text-[#19202D] sm:rounded-bl-[56px]`}
-      >
-        <div className={`mt-5 flex w-[80%] items-end justify-between`}>
-          <p className={`text-xl font-black text-white`}>devjobs</p>
-          <div className="flex items-center justify-center gap-2">
-            {/* icon */}
-            <img src="src\assets\desktop\icon-sun.svg" alt="sun icon" />
-            <div
-              onClick={() => darkSet((prev) => !prev)}
-              className={`flex h-4 w-8 items-center rounded-full bg-white ${
-                dark ? "justify-end" : "justify-start"
-              } `}
-            >
-              <div
-                className={`m-1 h-2 w-2 rounded-full bg-blue-500 hover:bg-blue-400`}
-              ></div>
-            </div>
-            <img src="src\assets\desktop\icon-moon.svg" alt="moon icon" />
-          </div>
-        </div>
-
+      <div className={` flex flex-col items-center justify-center`}>
         {/* details  */}
         <div
           className={`absolute top-20 flex h-52 w-[90%] rounded-[10px] ${
@@ -37,7 +14,7 @@ const Detail = () => {
         >
           <div
             style={{ background: state.logoBackground }}
-            className="absolute -top-7 left-[40%] flex h-14 w-14 items-center justify-center rounded-[10px] bg-blue-500 sm:relative sm:left-0 sm:top-0 sm:h-full sm:w-[20%] sm:rounded-none"
+            className="absolute -top-7 left-[43%] flex h-14 w-14 items-center justify-center rounded-[10px] bg-blue-500 sm:relative sm:left-0 sm:top-0 sm:h-full sm:w-[20%] sm:rounded-none"
           >
             <img src={state.logo} />
           </div>
@@ -57,10 +34,7 @@ const Detail = () => {
           </div>
         </div>
       </div>
-      <div
-        className="mt-52 flex flex-col items-center sm:mt-0 
-      "
-      >
+      <div className="mt-36 flex flex-col items-center sm:mt-0">
         <div
           className={`w-[90%] rounded-[10px] ${
             dark ? "bg-[#19202D]" : "bg-white"
@@ -120,7 +94,11 @@ const Detail = () => {
           </div>
         </div>
       </div>
-      <footer className="mt-20 flex h-20 w-full justify-center bg-white">
+      <footer
+        className={`mt-20 flex h-20 w-full justify-center ${
+          dark ? "bg-[#19202D]" : "bg-white"
+        }`}
+      >
         <div className="flex w-[90%] items-center justify-between sm:w-[50%] ">
           <div className="hidden sm:block">
             <p>{state.position}</p>
