@@ -4,12 +4,16 @@ import { useLocation } from "react-router-dom";
 const Detail = ({ dark }) => {
   const { state } = useLocation();
   return (
-    <div className={`${dark ? "bg-black" : "bg-gray-200"}`}>
+    <div
+      className={`dark:bg-black ${
+        dark ? "bg-black dark:bg-gray-200" : "bg-gray-200"
+      }`}
+    >
       <div className={` flex flex-col items-center justify-center`}>
         {/* details  */}
         <div
-          className={`absolute top-20 flex h-52 w-[90%] rounded-[10px] ${
-            dark ? "bg-[#19202D]" : "bg-white"
+          className={`absolute top-20 flex h-52 w-[90%] rounded-[10px] dark:bg-[#19202D] ${
+            dark ? "bg-[#19202D] dark:bg-white" : "bg-white"
           } sm:h-24 sm:rounded-none md:w-[50%]`}
         >
           <div
@@ -20,7 +24,11 @@ const Detail = ({ dark }) => {
           </div>
           <div className="flex w-full flex-col items-center justify-evenly p-5 sm:w-[80%] sm:flex-row sm:justify-between">
             <div className="flex flex-col items-center justify-center sm:block">
-              <p className={`font-bold ${dark ? "text-white" : ""}`}>
+              <p
+                className={`font-bold dark:text-white ${
+                  dark ? "text-white dark:text-black" : ""
+                }`}
+              >
                 {state.company}
               </p>
               <p className="text-[#9DAEC2]">{`${state.company.toLowerCase()}.com`}</p>
@@ -36,8 +44,8 @@ const Detail = ({ dark }) => {
       </div>
       <div className="mt-36 flex flex-col items-center sm:mt-0">
         <div
-          className={`w-[90%] rounded-[10px] ${
-            dark ? "bg-[#19202D]" : "bg-white"
+          className={`w-[90%] rounded-[10px] dark:bg-[#19202D] ${
+            dark ? "bg-[#19202D] dark:bg-white" : "bg-white"
           } p-10 sm:rounded-none md:w-[50%]`}
         >
           <div className="flex flex-col justify-between sm:flex-row sm:items-center">
@@ -46,8 +54,10 @@ const Detail = ({ dark }) => {
                 className={`text-[#9DAEC2]`}
               >{`${state.postedAt} . ${state.contract}`}</p>
               <p
-                className={`text-xl font-black ${
-                  dark ? "text-white" : "text-[hsl(214,17%,51%)]"
+                className={`text-xl font-black dark:text-white ${
+                  dark
+                    ? "text-white dark:text-[hsl(214,17%,51%)]"
+                    : "text-[hsl(214,17%,51%)]"
                 }`}
               >
                 {state.position}
@@ -62,7 +72,9 @@ const Detail = ({ dark }) => {
           <div className="text-[#9DAEC2]">
             <p className="mt-5">{state.description}</p>
             <h1
-              className={`mt-5 font-bold ${dark ? "text-white" : "text-black"}`}
+              className={`mt-5 font-bold dark:text-white ${
+                dark ? "text-white dark:text-black" : "text-black"
+              }`}
             >
               Requirements
             </h1>
@@ -77,7 +89,9 @@ const Detail = ({ dark }) => {
               </ul>
             </div>
             <p
-              className={`mt-5 font-bold ${dark ? "text-white" : "text-black"}`}
+              className={`mt-5 font-bold dark:text-white ${
+                dark ? "text-white dark:text-black" : "text-black"
+              }`}
             >
               What you will do
             </p>
@@ -95,8 +109,10 @@ const Detail = ({ dark }) => {
         </div>
       </div>
       <footer
-        className={`mt-20 flex h-20 w-full justify-center ${
-          dark ? "bg-[#19202D] text-gray-200" : "bg-white"
+        className={`mt-20 flex h-20 w-full justify-center dark:bg-[#19202D] dark:text-gray-200 ${
+          dark
+            ? "bg-[#19202D] text-gray-200 dark:bg-white dark:text-gray-500"
+            : "bg-white"
         }`}
       >
         <div className="flex w-[90%] items-center justify-between sm:w-[50%] ">

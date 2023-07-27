@@ -21,8 +21,8 @@ export default function Modal({
             ></div>
             <div className="flex min-h-screen items-center px-4 py-8">
               <div
-                className={`relative mx-auto w-full max-w-lg rounded-md ${
-                  dark ? "bg-black" : "bg-white"
+                className={`relative mx-auto w-full max-w-lg rounded-md dark:bg-black ${
+                  dark ? "bg-black dark:bg-white" : "bg-white"
                 } p-4 shadow-lg`}
               >
                 <div className="flex gap-5 py-5">
@@ -32,15 +32,17 @@ export default function Modal({
                     name="location"
                     placeholder="Filter by location..."
                     onChange={(e) => setLocationValue(e.target.value)}
-                    className={`focus:outline-none ${
-                      dark ? "bg-[#19202D]" : "bg-white"
-                    } ${dark ? "text-white" : "text-gray-500"} rounded-sm`}
+                    className={`focus:outline-none dark:bg-[#19202D] ${
+                      dark ? "bg-[#19202D] dark:bg-white" : "bg-white"
+                    } ${
+                      dark ? "text-white dark:text-gray-500" : "text-gray-500"
+                    } rounded-sm dark:text-white`}
                   />
                 </div>
                 <hr />
                 <div
-                  className={`flex gap-5 py-10 text-lg font-bold ${
-                    dark ? "text-white" : "text-black"
+                  className={`flex gap-5 py-10 text-lg font-bold dark:text-white ${
+                    dark ? "text-white dark:text-black" : "text-black"
                   }`}
                 >
                   <input
@@ -48,7 +50,7 @@ export default function Modal({
                     name="check"
                     checked={fullTimeOnly}
                     onChange={(e) => setFullTimeOnly(e.target.checked)}
-                    className={` `}
+                    className={``}
                   />
                   <p>Full Time Only</p>
                 </div>

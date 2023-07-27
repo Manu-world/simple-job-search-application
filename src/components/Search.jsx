@@ -32,14 +32,14 @@ const Navbar = ({
         setLocationValue={setLocationValue}
       />
       <div
-        className={`absolute top-20 h-20 w-[80%] sm:h-14 ${
-          dark ? "bg-[#19202D]" : "bg-white"
+        className={`absolute top-20 h-20 w-[80%] dark:bg-[#19202D] sm:h-14 ${
+          dark ? "bg-[#19202D] dark:bg-white" : "bg-white"
         } flex items-center justify-center rounded-md  sm:rounded-sm`}
       >
         {/* search by title */}
         <div
-          className={`w-full sm:w-[33%] sm:border-r-2 md:w-[40%] ${
-            dark ? "border-[#6E8098]" : ""
+          className={`w-full dark:border-[#6E8098] sm:w-[33%] sm:border-r-2 md:w-[40%] ${
+            dark ? "border-[#6E8098] dark:border-gray-200" : ""
           } flex h-full items-center justify-between p-5 sm:justify-start`}
         >
           <img
@@ -53,17 +53,19 @@ const Navbar = ({
             value={searchValue}
             onChange={(e) => setSearchValue(e.target.value)}
             placeholder="Filter by title, companies, expertise..."
-            className={`h-10 w-[40%] focus:outline-none sm:w-[85%] ${
-              dark ? "bg-[#19202D]" : "bg-white"
-            } ${dark ? "text-white" : "text-gray-300"} -mt-1 cursor-pointer`}
+            className={`h-10 w-[40%] focus:outline-none dark:bg-[#19202D] sm:w-[85%] ${
+              dark ? "bg-[#19202D] dark:bg-white" : "bg-white"
+            } ${
+              dark ? "text-white dark:text-gray-500" : "text-gray-500"
+            } -mt-1 cursor-pointer dark:text-white`}
           />
 
           {/* mobile view Filter  */}
           <div className="flex items-center justify-center sm:hidden">
             <div
               className={`flex h-12 w-12 items-center justify-center rounded-md ${
-                dark ? "bg-[#19202D]" : "bg-white"
-              } sm:hidden`}
+                dark ? "bg-[#19202D] dark:bg-white" : "bg-white"
+              } dark:bg-[#19202D] sm:hidden`}
               onClick={handleOpen}
             >
               <svg width="20" height="20" xmlns="http://www.w3.org/2000/svg">
@@ -94,8 +96,8 @@ const Navbar = ({
 
         <div
           className={`hidden h-full items-center justify-center border-r-2 p-5 sm:flex sm:w-[33%] md:w-[30%] ${
-            dark ? "border-[#6E8098]" : ""
-          } `}
+            dark ? "border-[#6E8098] dark:border-gray-200" : ""
+          } dark:border-[#6E8098]`}
         >
           <img
             src="assets\desktop\icon-location.svg"
@@ -108,14 +110,16 @@ const Navbar = ({
             value={locationValue}
             onChange={(e) => setLocationValue(e.target.value)}
             placeholder="Filter by location..."
-            className={`h-10 w-full focus:outline-none ${
-              dark ? "bg-[#19202D]" : "bg-white"
-            } ${dark ? "text-white" : "text-gray-300"} -mt-2 cursor-pointer`}
+            className={`h-10 w-full focus:outline-none dark:bg-[#19202D] ${
+              dark ? "bg-[#19202D] dark:bg-white" : "bg-white"
+            } ${
+              dark ? "text-white dark:text-gray-500" : "text-gray-500"
+            } -mt-2 cursor-pointer dark:text-white`}
           />
         </div>
         <div
-          className={`hidden max-w-md items-center justify-evenly sm:flex ${
-            dark ? "text-white" : "text-gray-300"
+          className={`hidden max-w-md items-center justify-evenly dark:text-white sm:flex ${
+            dark ? "text-white dark:text-gray-300" : "text-gray-300"
           } px-2`}
         >
           <input
@@ -124,11 +128,11 @@ const Navbar = ({
             id="check"
             checked={fullTimeOnly}
             onChange={(e) => setFullTimeOnly(e.target.checked)}
-            className="form-checkbox h-3 w-3 cursor-pointer bg-gray-300"
+            className=" h-3 w-3 cursor-pointer bg-gray-300"
           />
           <p
-            className={`ml-3 mr-6 text-sm font-bold ${
-              dark ? "text-white" : "text-black"
+            className={`ml-3 mr-6 text-sm font-bold dark:text-white ${
+              dark ? "text-white dark:text-black" : "text-black"
             }`}
           >
             Full Time <span className="hidden md:inline-block"> Only</span>

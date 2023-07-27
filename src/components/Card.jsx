@@ -7,9 +7,9 @@ const Card = ({ data, dark }) => {
   const navigate = useNavigate();
   return (
     <div
-      className={`min-h-52 relative w-full rounded-md ${
-        dark ? "bg-[#19202D]" : "bg-white"
-      } cursor-pointer`}
+      className={`min-h-52 relative w-full rounded-md dark:bg-[#19202D] ${
+        dark ? "bg-[#19202D] dark:bg-white" : "bg-white"
+      } group transform cursor-pointer transition-all duration-300 hover:scale-105`}
       onClick={() => navigate("/details", { state: data })}
     >
       {/* top logo banner */}
@@ -26,9 +26,11 @@ const Card = ({ data, dark }) => {
           className={`text-[#9DAEC2]`}
         >{`${data.postedAt} . ${data.contract}`}</p>
         <p
-          className={`text-xl font-black ${
-            dark ? "text-white" : "text-[hsl(214,17%,51%)]"
-          }`}
+          className={`text-xl font-black dark:text-white ${
+            dark
+              ? "text-white dark:text-[hsl(214,17%,51%)]"
+              : "text-[hsl(214,17%,51%)]"
+          } group-hover:text-[#9DAEC2]`}
         >
           {data.position}
         </p>

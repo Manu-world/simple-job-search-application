@@ -7,7 +7,11 @@ import Topbar from "./components/Topbar";
 const App = () => {
   const [dark, setDark] = useState(false);
   return (
-    <div className={`${dark ? "bg-black" : "bg-gray-200"}`}>
+    <div
+      className={`${
+        dark ? "bg-black dark:bg-gray-200" : "bg-gray-200"
+      } dark:bg-black`}
+    >
       <Topbar dark={dark} onClick={() => setDark((prev) => !prev)} />
       <Routes>
         <Route path="/details" element={<Detail dark={dark} />} />

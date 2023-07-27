@@ -63,18 +63,17 @@ const Index = ({ dark }) => {
           {filteredData.slice(0, visibleItems).map((item) => (
             <Card key={item.id} data={item} dark={dark} />
           ))}
-
-          {visibleItems < filteredData.length && (
-            <div className="mb-10 flex justify-center md:justify-start">
-              <button
-                className="rounded bg-blue-500 px-4 py-2 text-white "
-                onClick={handleLoadMore}
-              >
-                Load More
-              </button>
-            </div>
-          )}
         </div>
+        {visibleItems < filteredData.length && (
+          <div className="my-10 flex w-[100%] justify-center">
+            <button
+              className="rounded bg-blue-500 px-4 py-2 text-white hover:bg-blue-200 hover:text-blue-500"
+              onClick={handleLoadMore}
+            >
+              Load More
+            </button>
+          </div>
+        )}
       </div>
     </div>
   );
