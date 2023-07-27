@@ -10,7 +10,7 @@ const Detail = ({ dark }) => {
         <div
           className={`absolute top-20 flex h-52 w-[90%] rounded-[10px] ${
             dark ? "bg-[#19202D]" : "bg-white"
-          } sm:h-24 sm:w-[50%] sm:rounded-none`}
+          } sm:h-24 sm:rounded-none md:w-[50%]`}
         >
           <div
             style={{ background: state.logoBackground }}
@@ -18,7 +18,7 @@ const Detail = ({ dark }) => {
           >
             <img src={state.logo} />
           </div>
-          <div className="flex w-full flex-col items-center justify-evenly p-5 sm:w-[80%] sm:flex-row">
+          <div className="flex w-full flex-col items-center justify-evenly p-5 sm:w-[80%] sm:flex-row sm:justify-between">
             <div className="flex flex-col items-center justify-center sm:block">
               <p className={`font-bold ${dark ? "text-white" : ""}`}>
                 {state.company}
@@ -27,7 +27,7 @@ const Detail = ({ dark }) => {
             </div>
             <a
               href={state.website}
-              className="rounded bg-violet-200 px-4 py-2 text-violet-500"
+              className="transform rounded bg-violet-200 px-4 py-2 text-violet-500 transition-all duration-200 hover:scale-105"
             >
               Company Site
             </a>
@@ -38,7 +38,7 @@ const Detail = ({ dark }) => {
         <div
           className={`w-[90%] rounded-[10px] ${
             dark ? "bg-[#19202D]" : "bg-white"
-          } p-10 sm:w-[50%] sm:rounded-none`}
+          } p-10 sm:rounded-none md:w-[50%]`}
         >
           <div className="flex flex-col justify-between sm:flex-row sm:items-center">
             <div>
@@ -54,7 +54,7 @@ const Detail = ({ dark }) => {
               </p>
               <p className={`text-[#5964E0] sm:mt-4`}>{state.location}</p>
             </div>
-            <button className="mt-10 w-full rounded bg-violet-700 px-4 py-2 text-violet-200 sm:mt-0 sm:w-fit">
+            <button className="mt-10 w-full rounded bg-violet-700 px-4 py-2 text-violet-200 hover:bg-violet-200 hover:text-violet-700 sm:mt-0 sm:w-fit">
               Apply Now
             </button>
           </div>
@@ -96,7 +96,7 @@ const Detail = ({ dark }) => {
       </div>
       <footer
         className={`mt-20 flex h-20 w-full justify-center ${
-          dark ? "bg-[#19202D]" : "bg-white"
+          dark ? "bg-[#19202D] text-gray-200" : "bg-white"
         }`}
       >
         <div className="flex w-[90%] items-center justify-between sm:w-[50%] ">
@@ -105,7 +105,7 @@ const Detail = ({ dark }) => {
             <p>{"So Digital Inc."}</p>
           </div>
 
-          <button className="w-full rounded bg-violet-700 px-4 py-2 text-violet-200 sm:w-fit">
+          <button className="w-full rounded bg-violet-700 px-4 py-2 text-violet-200 hover:bg-violet-200 hover:text-violet-700 sm:w-fit">
             Apply Now
           </button>
         </div>
