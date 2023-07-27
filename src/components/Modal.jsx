@@ -26,7 +26,7 @@ export default function Modal({
                 } p-4 shadow-lg`}
               >
                 <div className="flex gap-5 py-5">
-                  <img src="src\assets\desktop\icon-location.svg" />
+                  <img src="assets\desktop\icon-location.svg" />
                   <input
                     type="text"
                     name="location"

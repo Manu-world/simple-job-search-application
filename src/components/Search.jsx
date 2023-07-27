@@ -43,7 +43,7 @@ const Navbar = ({
           } flex h-full items-center justify-between p-5 sm:justify-start`}
         >
           <img
-            src="src\assets\desktop\icon-search.svg"
+            src="assets\desktop\icon-search.svg"
             alt="search icon"
             className="mr-2 hidden h-5 w-5 sm:flex"
           />
@@ -98,7 +98,7 @@ const Navbar = ({
           } `}
         >
           <img
-            src="src\assets\desktop\icon-location.svg"
+            src="assets\desktop\icon-location.svg"
             alt="location icon"
             className="mr-2 h-5 w-4"
           />
