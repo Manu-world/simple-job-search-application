@@ -1,16 +1,15 @@
 import React, { useState } from "react";
 import Card from "./Card";
 import data from "../data.json";
-import Navbar from "./Navbar";
+import Search from "./Search";
 
-const Index = () => {
+const Index = ({ dark }) => {
   const [visibleItems, setVisibleItems] = useState(12);
 
   const [searchValue, setSearchValue] = useState("");
   const [locationValue, setLocationValue] = useState("");
   const [fullTimeOnly, setFullTimeOnly] = useState(false);
   const [filteredData, setFilteredData] = useState(data);
-  const [dark, setDark] = useState(false);
 
   const handleSearch = (searchValue, locationValue, fullTimeOnly) => {
     let newData = data;
@@ -40,16 +39,14 @@ const Index = () => {
     setFilteredData(newData);
   };
 
-  // from the body component
+  // manage visible items
   const handleLoadMore = () => {
-    // Increase the number of visible items by 12
     setVisibleItems((prevVisibleItems) => prevVisibleItems + 12);
   };
 
   return (
-    <div className={`${dark ? "bg-black" : "bg-gray-200"} min-h-screen`}>
-      <Navbar
-        onClick={() => setDark((prev) => !prev)}
+    <div className={`min-h-screen`}>
+      <Search
         dark={dark}
         onSearch={handleSearch}
         setLocationValue={setLocationValue}
@@ -66,18 +63,17 @@ const Index = () => {
           {filteredData.slice(0, visibleItems).map((item) => (
             <Card key={item.id} data={item} dark={dark} />
           ))}
-
-          {visibleItems < filteredData.length && (
-            <div className="mb-10 flex justify-center md:justify-start">
-              <button
-                className="rounded bg-blue-500 px-4 py-2 text-white "
-                onClick={handleLoadMore}
-              >
-                Load More
-              </button>
-            </div>
-          )}
         </div>
+        {visibleItems < filteredData.length && (
+          <div className="my-10 flex w-[100%] justify-center">
+            <button
+              className="rounded bg-blue-500 px-4 py-2 text-white hover:bg-blue-200 hover:text-blue-500"
+              onClick={handleLoadMore}
+            >
+              Load More
+            </button>
+          </div>
+        )}
       </div>
     </div>
   );
