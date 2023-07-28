@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import Index from "./components/Index";
 import Detail from "./components/Details";
-import { Navigate, Route, Routes } from "react-router-dom";
+import { Route, Routes } from "react-router-dom";
 import Topbar from "./components/Topbar";
 
 const App = () => {
