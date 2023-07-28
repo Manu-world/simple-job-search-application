@@ -85,9 +85,12 @@ const Index = ({ dark }) => {
                 dark ? "text-white" : "text-gray-500"
               } pl-5 pr-5 md:pl-0`}
             >
-              <p> Opps! Sorry, your search did not match any job </p>
+              <p className="mr-1">
+                {" "}
+                Opps! Sorry, your search did not match any job{" "}
+              </p>
               <a href="./" className="text-blue-500">
-                ←Home
+                ←back
               </a>
             </div>
           </div>

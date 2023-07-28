@@ -6,12 +6,10 @@ import { Link } from "react-router-dom";
 const Card = ({ data, dark }) => {
   return (
     <Link
-      to={`/details/${data.id} `}
-      
+      to={`/details/${data.id}`}
       className={`min-h-52 relative w-full rounded-md dark:bg-[#19202D] ${
         dark ? "bg-[#19202D] dark:bg-white" : "bg-white"
       } group transform cursor-pointer transition-all duration-300 hover:scale-105`}
-      onClick={() => navigate("/details", { state: data })}
     >
       {/* top logo banner */}
       <div

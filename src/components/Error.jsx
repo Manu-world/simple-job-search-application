@@ -7,7 +7,7 @@ const Error = () => {
         dark ? "text-white" : "text-gray-600"
       }`}
     >
-      Opps! Sorry💔, your search did not match any job
+      Opps! Sorry, page not found.
     </div>
   );
 };
