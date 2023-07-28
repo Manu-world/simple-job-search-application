@@ -14,8 +14,8 @@ const App = () => {
     >
       <Topbar dark={dark} onClick={() => setDark((prev) => !prev)} />
       <Routes>
-        <Route path="/details" element={<Detail dark={dark} />} />
         <Route path="/" element={<Index dark={dark} />} />
+        <Route path="/details/:id" element={<Detail dark={dark} />} />
       </Routes>
     </div>
   );

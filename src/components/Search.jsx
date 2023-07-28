@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import Modal from "./Modal";
+import { Link } from "react-router-dom";
 
 const Navbar = ({
   dark,
@@ -43,7 +44,7 @@ const Navbar = ({
           } flex h-full items-center justify-between p-5 sm:justify-start`}
         >
           <img
-            src="assets\desktop\icon-search.svg"
+            src="\assets\desktop\icon-search.svg"
             alt="search icon"
             className="mr-2 hidden h-5 w-5 sm:flex"
           />
@@ -79,7 +80,9 @@ const Navbar = ({
 
             <div
               className="flex h-12 w-12 items-center justify-center rounded-md bg-blue-500 sm:hidden"
-              onClick={() => onSearch(searchValue, locationValue, fullTimeOnly)}
+              onClick={() => {
+                onSearch(searchValue, locationValue, fullTimeOnly);
+              }}
             >
               <svg width="24" height="24" xmlns="http://www.w3.org/2000/svg">
                 <path
@@ -100,7 +103,7 @@ const Navbar = ({
           } dark:border-[#6E8098]`}
         >
           <img
-            src="assets\desktop\icon-location.svg"
+            src="\assets\desktop\icon-location.svg"
             alt="location icon"
             className="mr-2 h-5 w-4"
           />

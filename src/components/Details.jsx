@@ -1,8 +1,10 @@
 import React from "react";
-import { useLocation } from "react-router-dom";
+import { useParams } from "react-router-dom";
+import data from "../data.json";
 
 const Detail = ({ dark }) => {
-  const { state } = useLocation();
+  const { id } = useParams();
+  const state = data.find((object) => object.id === parseInt(id));
   return (
     <div
       className={`dark:bg-black ${
