@@ -53,7 +53,8 @@ Contributions are welcome and encouraged! Here are some ways you can contribute 
 
 
 ## License
-This project is licensed under the MIT License.
+
+This project is licensed under [Amalitech](https://amalitech.org/).
 
 ## Contact
 

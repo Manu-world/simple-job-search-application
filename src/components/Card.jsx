@@ -1,16 +1,15 @@
 import React from "react";
-import { useNavigate } from "react-router-dom";
+import { Link } from "react-router-dom";
 
 // light-gray- #f4f6f8 gray- #9DAEC2 Dark-gray- #6E8098 violet- #9e7f66 violet:hover #939BF4 veryDarkBlue- #19202D midnight- #121721
 
 const Card = ({ data, dark }) => {
-  const navigate = useNavigate();
   return (
-    <div
+    <Link
+      to={`/details/${data.id}`}
       className={`min-h-52 relative w-full rounded-md dark:bg-[#19202D] ${
         dark ? "bg-[#19202D] dark:bg-white" : "bg-white"
       } group transform cursor-pointer transition-all duration-300 hover:scale-105`}
-      onClick={() => navigate("/details", { state: data })}
     >
       {/* top logo banner */}
       <div
@@ -37,7 +36,7 @@ const Card = ({ data, dark }) => {
         <p className={`text-[#9DAEC2]`}>{data.company}</p>
         <p className={`mt-4 text-[#5964E0]`}>{data.location}</p>
       </div>
-    </div>
+    </Link>
   );
 };
 
